@@ -102,5 +102,44 @@
 
         </template>
 
+           <!--changenovobi-->
+        <template id="pre_order_lines" name="Pre Orders" inherit_id="portal.portal_my_home">
+            <xpath expr="//div[@class='col-md-12 oe_structure']" position="inside">
+                <h3 class="page-header">Pre Orders</h3>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="preorders.previous_order_ids" t-as="pre">
+                            <tr>
+                                <td>
+                                    <span t-field="pre.date"/>
+                                </td>
+                                <td>
+                                    <span t-field="pre.note"/>
+
+                                </td>
+                                <td>
+                                    <span t-field="pre.price"/>
+
+                                </td>
+                                <td>
+                                    <span t-field="pre.state"/>
+
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </xpath>
+        </template>
+        
+        
     </data>
 </odoo>
