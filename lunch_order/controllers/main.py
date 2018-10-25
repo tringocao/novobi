@@ -253,9 +253,11 @@ class LunchController(WebsiteSale):
 
     @http.route(['/receive_slack '], type='json', website=True, auth="user",methods=['POST'], csrf=False)
     def receive_slack(self,**post):
+        _logger.info("in slackkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
         if post.get('token') == "NrE1wTcTzSZ5S6plNPBexrIt":
             channel = post.get('channel')
             username = post.get('username')
+            _logger.info("in slackkkkkkkkkkkkoooooooooooooooooooooooooooooooook")
             return "Channel: " + channel + "Username: " + username
         else:
             return "None found"
