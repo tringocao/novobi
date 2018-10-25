@@ -6,6 +6,7 @@ from datetime import timedelta
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 from odoo.addons.auth_signup.models.res_users import SignupError
+from time import gmtime, strftime
 
 from odoo.addons.web.controllers.main import Home
 from odoo.http import request
