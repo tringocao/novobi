@@ -202,9 +202,9 @@ class LunchOrderScheduler(models.Model):
 
         # send for user
         order = self.env['lunch.order'].search([('state', '=', 'confirmed')]).filtered(
-            lambda record: datetime.datetime.strptime(str(record.date), '%Y-%m-%d').month == int(
+            lambda record: datetime.strptime(str(record.date), '%Y-%m-%d').month == int(
                 strftime("%m", gmtime()))
-                           and datetime.datetime.strptime(str(record.date), '%Y-%m-%d').year == int(strftime("%Y",
+                           and datetime.strptime(str(record.date), '%Y-%m-%d').year == int(strftime("%Y",
                                                                                                              gmtime())))
         list_id = []
         # total = []
