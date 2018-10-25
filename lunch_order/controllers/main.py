@@ -371,3 +371,11 @@ class SignUpSlack(AuthSignupHome):
         })
         return super(SignUpSlack, self)._signup_with_values(token, values)
 
+class MyAccount(CustomerPortal):
+    # changenovobi
+    @http.route(['/my'], type='http', auth="user", website=True)
+    def home(self, **kw):
+        values = self._prepare_portal_layout_values()
+        preorders = request.website.sale_get_lunch_order()
+
+        return request.render("lunch_order.pre_order_lines", {'values':values, 'preorders': preorders})  # template form
