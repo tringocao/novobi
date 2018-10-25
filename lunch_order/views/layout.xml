@@ -58,10 +58,8 @@
                                 <a t-attf-href="{{request.httprequest.url_root}}lunch">Lunch</a>
                                 <a class="border" t-attf-href="{{request.httprequest.url_root}}foody">Foody</a>
                                 <t t-if="request.session.get('uid')">
-                                    <span>Hello,
-                                        <a t-attf-href="{{request.httprequest.url_root}}my"><t t-esc="user_id.name"/></a>
-                                    </span>
-                                    <a t-attf-href="{{request.httprequest.url_root}}web/session/logout?redirect={{request.httprequest.url_root}}web/login">
+                                        <a t-attf-href="{{request.httprequest.url_root}}my">Hello, <t t-esc="user_id.name"/></a>
+                                           <a t-attf-href="{{request.httprequest.url_root}}web/session/logout?redirect={{request.httprequest.url_root}}web/login">
                                         Logout
                                     </a>
                                 </t>
