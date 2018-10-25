@@ -376,6 +376,9 @@ class MyAccount(CustomerPortal):
     @http.route(['/my'], type='http', auth="user", website=True)
     def home(self, **kw):
         values = self._prepare_portal_layout_values()
-        preorders = request.website.sale_get_lunch_order()
+        preorders = request.env['lunch.order'].sudo().search([('user_id', '=', request.session.get('uid'))]).filtered(
+            lambda record: datetime.strptime(str(record.date), '%Y-%m-%d').month == int(strftime("%m", gmtime()))
+                           and datetime.strptime(str(record.date), '%Y-%m-%d').year == int(strftime("%Y",
+                                                                                                         gmtime())))
 
         return request.render("lunch_order.pre_order_lines", {'values':values, 'preorders': preorders})  # template form
