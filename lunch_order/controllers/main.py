@@ -249,7 +249,7 @@ class LunchController(WebsiteSale):
         for item in item_id.order_line_ids:
             item.sudo().write({'state': 'confirmed'})
         request.session['lunch_order_id'] = False
-        _logger.info("in confirmproductttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt")
+        _logger.info("in confirmproductttttttttttttttttttttttttttttttttttttttttttttttttttttt")
         _logger.info(request.session['lunch_order_id'])
 
         return True
