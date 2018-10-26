@@ -200,6 +200,8 @@ class LunchController(WebsiteSale):
             'keep': keep,
             'parent_category_ids': parent_category_ids,
             'onhome': True
+            'lunch_pg':True,
+            'foody_pg': False
         }
         if category:
             values['main_object'] = category
@@ -319,6 +321,8 @@ class LunchController(WebsiteSale):
             'keep': keep,
             'parent_category_ids': [],
             'onhome': True
+            'lunch_pg': False,
+            'foody_pg': True
         }
         if category:
             values['main_object'] = category
