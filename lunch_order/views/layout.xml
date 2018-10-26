@@ -56,7 +56,7 @@
                             <!--Top menu options-->
                             <div class="pull-right top-options">
                                 <a t-att-class="('border' if lunch_pg  else '')" t-attf-href="{{request.httprequest.url_root}}lunch">Lunch</a>
-                                <a t-att-class="('border' if foody_pg  else '')" t-attf-href="{{request.httprequest.url_root}}foody">Foody</a>
+                                <a t-att-class="('border' if foody_pg  else '')" href="https://www.now.vn/">Foody</a>
 
                                 <t t-if="request.session.get('uid')">
                                         <a t-attf-href="{{request.httprequest.url_root}}my">Hello, <t t-esc="user_id.name"/></a>
