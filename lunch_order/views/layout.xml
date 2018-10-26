@@ -55,8 +55,8 @@
                             </div>
                             <!--Top menu options-->
                             <div class="pull-right top-options">
-                                <a t-attf-href="{{request.httprequest.url_root}}lunch">Lunch</a>
-                                <a class="border" t-attf-href="{{request.httprequest.url_root}}foody">Foody</a>
+                               <a t-att-class="('border' if lunch_pg  else '')" t-attf-href="{{request.httprequest.url_root}}lunch">Lunch</a>
+                                <a t-att-class="('border' if foody_pg  else '')" t-attf-href="{{request.httprequest.url_root}}foody">Foody</a>
                                 <t t-if="request.session.get('uid')">
                                         <a t-attf-href="{{request.httprequest.url_root}}my">Hello, <t t-esc="user_id.name"/></a>
                                            <a t-attf-href="{{request.httprequest.url_root}}web/session/logout?redirect={{request.httprequest.url_root}}web/login">
