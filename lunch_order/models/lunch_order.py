@@ -34,6 +34,7 @@ class Lunchs(models.Model):
     _inherit = "lunch.product"
 
     img = fields.Binary(required=False, )
+    supplier = fields.Many2one('res.partner', 'Store')
 
     @api.multi
     def google_search(self):
