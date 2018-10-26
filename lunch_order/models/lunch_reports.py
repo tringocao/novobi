@@ -17,8 +17,11 @@ class LunchReportManager(models.AbstractModel):
         # total = []
         users_order = []
         # first_user = 0
+        # novobi
+        get_curency = None
         for user in order:
             list_id.append(user.user_id.id)
+            get_curency = user.currency_id
 
         list_id_set = list(set(list_id))
 
@@ -37,19 +40,24 @@ class LunchReportManager(models.AbstractModel):
         total_users_order_price = []
         total_price = 0
 
+        name_user = []
         for user in users_order:
             order_id = order.filtered(lambda r:r.user_id.id == int(user.id)).mapped(lambda r:r.total)
             price_id = reduce((lambda x, y: x + y), order_id)
             total_users_order_price.append(price_id)
             total_price += price_id
+            name = self.env['res.partner'].sudo().search([('id', '=', user.partner_id.id)])
+            name_user.append(name.name)
 
-        docs = list(zip(users_order, total_users_order_price))
+        #lazy
+        docs = list(zip(name_user, total_users_order_price))
 
         return {
             'doc_ids': 0,
             'doc_model': 'lunch.order',
             'docs': docs,
-            'total_price':total_price
+            'total_price':total_price,
+            'currency_id':get_curency
         }
 
 
@@ -65,15 +73,19 @@ class LunchReportUser(models.AbstractModel):
                                                                                                          gmtime())))
 
         user = self.env['res.users'].search([('id', 'in', docids)])
-
+        # novobi
+        get_curency = None
         total_price = 0
         for ord in order:
             total_price += ord.total
+            get_curency = user.currency_id
 
         return {
             'doc_ids': docids,
             'doc_model': 'lunch.order',
             'docs': order,
             'total_price': total_price,
-            'user_infor': user
+            'user_infor': user,
+            'currency_id': get_curency
+
         }
